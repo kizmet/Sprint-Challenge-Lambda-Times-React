@@ -1,35 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
+//import { x } from "./Alert";
+import styled from 'styled-components';
 import { carouselData } from '../../data'
-// Complete this Carousel 
-export default class Carousel extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
 
-    }
-  }
-  componentDidMount(){
+const CarouselW = styled.div`
+display:flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 1280px;
+`;
+const Flex = styled.div`
+display:flex;
+flex-direction: column;
+`;
 
-  }
 
-  leftClick = () => {
+const Carousel = () => {
+  const [image, setImage] = useState(carouselData);
+  const [count, setCount] = useState(2);
 
-  }
+  return (
+    <CarouselW>
 
-  rightClick = () => {
+      <Flex>
+        <button onClick={() => setCount(count - 1)}>{"<"} </button>
 
-  }
+      </Flex>
+      <Flex>
+        <img
+          src={image[count]}
+        >
+        </img>
+      </Flex>
+      <Flex>
+        <button onClick={() => setCount(count + 1)}>{">"} </button>
+      </Flex>
 
-  selectedImage = () => {
-    return <img src={} style={{display: 'block'}} />
-  }
-  
-  render(){
-    return (
-      <div className="carousel">
-        <div className="left-button" onClick={this.leftClick}>{"<"}</div>
-        <div className="right-button" onClick={this.rightClick}>{">"}</div>
-      </div>
-    )
-  }
+    </CarouselW>
+  )
 }
+
+export default Carousel;
